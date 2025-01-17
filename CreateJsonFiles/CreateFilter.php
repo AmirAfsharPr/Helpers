@@ -34,7 +34,7 @@ function createFilter()
 
 
     // Regex برای استخراج داده‌ها
-    $regex = '/▪️([^\n]+)\n➕([^\n]+)\n(⭐️(?:الزامی|اختیاری))?\n((?:-.*?\n)*)/s';
+    $regex = '/▪️([^\n]+)\n➕([^\n]+)\n(⭐️(?:الزامی|اختیاری))?\n((?:[^\n]+\n)*)/s';
     preg_match_all($regex, $data, $fieldMatches, PREG_SET_ORDER);
 
     $output = collect();
@@ -51,6 +51,9 @@ function createFilter()
 
         // استخراج گزینه‌ها
         $options = array_map('trim', explode("\n", trim($fieldMatch[4])));
+        $options = array_map(function($option) {
+            return ltrim($option, '- ');  // حذف "-" و فضای خالی از ابتدای هر گزینه
+        }, $options);
 
         // ساختار نهایی داده‌ها
         $finalData = [

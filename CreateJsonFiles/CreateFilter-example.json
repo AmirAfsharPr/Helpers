@@ -1,0 +1,39 @@
+[
+    {
+        "label": "نوع كالا",
+        "sort": 1,
+        "name": "17371235851775",
+        "type": "multi-select",
+        "required": true,
+        "categories_slug": "test",
+        "options": [
+            "اصل و اورجينال",
+            "غير اصل",
+            "هر دو مورد"
+        ]
+    },
+    {
+        "label": "نوع ساخت",
+        "sort": 2,
+        "name": "17371235859393",
+        "type": "select",
+        "required": false,
+        "categories_slug": "test",
+        "options": [
+            "جديد",
+            "قديمی"
+        ]
+    },
+    {
+        "label": "امكانات تصويري",
+        "sort": 3,
+        "name": "17371235854641",
+        "type": "checkbox",
+        "required": true,
+        "categories_slug": "test",
+        "options": [
+            "ويدئو دار",
+            "عكس دار"
+        ]
+    }
+]
