@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Json Files</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container my-3">
+        <h1>Create Json Files</h1>
+
+
+
+        <div class="row">
+
+            <div class="col-12">
+                <form action="include/CreateFilter.php" method="post" id="formID">
+                    <div class="jumbotron mt-3" data-x-wrapper="employees">
+                        <div class="d-flex my-2 mb-4">
+                            <strong class="lead">Category :</strong>
+                            <input type="text" name="category" placeholder="category_slug" class="ml-2">
+                        </div>
+                        <div class="d-flex my-2" data-x-group>
+                            <input type="text" name="label" placeholder="label" class="ml-2" style="max-height: 30px" required>
+                            <select name="type" class="ml-2" style="max-height: 30px" required>
+                                <option value="multi-select">چند انتخابی</option>
+                                <option value="select">انتخاب</option>
+                                <option value="checkbox">چک</option>
+                                <option value="range">رنج</option>
+                            </select>
+                            <select name="required" class="ml-2" style="max-height: 30px" required>
+                                <option value="1">الزامی</option>
+                                <option value="0">اختیاری</option>
+                            </select>
+                            <input type="text" name="options" placeholder="options" class="ml-2 w-50"></input>
+
+                            <div class="ml-2">
+                                <button type="button" class="btn btn-danger" data-remove-btn>-</button>
+                                <button type="button" class="btn btn-primary" data-add-btn>+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-outline-danger">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./js/jquery-3.7.0.min.js"></script>
+    <script src="./js/jquery.replicate.js"></script>
+
+    <script>
+        const selector = '[data-x-wrapper]';
+        let options = {
+            disableNaming: '[data-disable-naming]',
+            wrapper: selector,
+            group: '[data-x-group]',
+            addBtn: '[data-add-btn]',
+            removeBtn: '[data-remove-btn]'
+        };
+
+        $(selector).replicate(options);
+
+        const form = $('#formID');
+
+        $(form).on('submit', (e) => {
+            e.preventDefault();
+
+
+            const formData = $(e.target).serialize(); // جمع‌آوری داده‌ها
+
+            $.post('include/CreateFilter.php', formData)
+                .done((response) => {
+                    console.log('Response from server:', response);
+                    alert('فایل با موفقیت ایجاد شد.');
+                })
+                .fail((error) => {
+                    console.error('Error sending form:', error.responseJSON);
+                    alert(error.responseJSON.message);
+                });
+        })
+
+    </script>
+</body>
+<script async src="./js/js.G-1VDDWMRSTH.js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1VDDWMRSTH');
+</script><script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+</html>
